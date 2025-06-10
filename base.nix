@@ -20,6 +20,8 @@
     };
   };
 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [ "steam" "steam-unwrapped" ];
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -71,6 +73,10 @@
       yaml-language-server
       ansible-language-server
       ansible
+
+      nil
+      nixd
+      nixfmt-classic
 
       # Backups
       rustic
