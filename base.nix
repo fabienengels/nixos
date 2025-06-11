@@ -66,6 +66,8 @@
       deno
       htop
 
+      killall
+
       aria2
 
       python313Packages.meshtastic
@@ -77,6 +79,10 @@
       yaml-language-server
       ansible-language-server
       ansible
+
+      libreoffice-qt-fresh
+      hunspell
+      hunspellDicts.fr-any
 
       imagemagick
       gimp3
