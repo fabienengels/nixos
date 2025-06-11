@@ -54,7 +54,7 @@
 
   users.users.fabien = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "dialout" "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       git
       git-lfs
@@ -66,6 +66,10 @@
       deno
       htop
 
+      aria2
+
+      python313Packages.meshtastic
+
       astro-language-server
       bun
       rust-analyzer
@@ -73,6 +77,9 @@
       yaml-language-server
       ansible-language-server
       ansible
+
+      imagemagick
+      gimp3
 
       nil
       nixd
@@ -90,6 +97,8 @@
       # Editors
       helix
       neovim
+
+      localsend
 
       go
       gopls
@@ -135,7 +144,10 @@
       yt-dlp
 
       k9s
+      kubectl
       fluxcd
+
+      chromium
 
       orca-slicer
     ];
@@ -147,8 +159,10 @@
   programs.hyprlock.enable = true;
 
   environment.systemPackages = with pkgs; [
+    appimage-run
     helix
     gammastep
+    dua
     wget
     tofi
     mc
@@ -169,7 +183,11 @@
     enableSSHSupport = true;
   };
 
-  networking.firewall.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 53317 ];
+    allowedUDPPorts = [ 53317 ];
+  };
 
   nix.gc = {
     automatic = true;
