@@ -64,7 +64,12 @@
       vscode-langservers-extracted
       taplo
       deno
+      hyperfine
+      bandwhich
       htop
+      devenv
+
+      poedit
 
       killall
 
@@ -103,6 +108,9 @@
       # Editors
       helix
       neovim
+
+      beam27Packages.elixir
+      lexical
 
       localsend
 
@@ -161,8 +169,20 @@
 
   programs.firefox.enable = true;
   programs.niri.enable = true;
-  programs.thunar.enable = true;
   programs.hyprlock.enable = true;
+
+  programs.xfconf.enable = true;
+  programs.thunar = {
+  enable = true;
+  plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+  thunar-volman
+  ];
+  };
+  services = {
+  gvfs.enable = true;
+  tumbler.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     appimage-run
@@ -170,11 +190,17 @@
     gammastep
     dua
     wget
+    bat
+    dysk
     tofi
     mc
+    python3Full
     zellij
+    nmap
     waybar
+    podman-compose
     wireguard-tools
+    pv
   ];
 
   fonts.packages = with pkgs; [
